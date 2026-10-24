@@ -1,0 +1,45 @@
+---
+description: Evidence management and citation standards for the project
+alwaysApply: true
+---
+
+# Evidence Management & Citations
+
+## Citation Format
+
+Use ABNT NBR 6023 for all citations in academic deliverables.
+
+```
+Exemplo de referência bibliográfica:
+SOBRENOME, Nome. Título da obra. Edição. Local: Editora, Ano.
+```
+
+In-text citations:
+```
+(SOBRENOME, Ano, p. XX)
+```
+
+## Evidence Tagging
+
+When recording a piece of evidence in any deliverable, tag it by type:
+
+| Tag | Meaning |
+|-----|---------|
+| `[FONTE-PRIMÁRIA]` | Direct source (interview, survey, observation) |
+| `[FONTE-SECUNDÁRIA]` | Published literature, reports, articles |
+| `[DADO-NÃO-VERIFICADO]` | Information present but source unconfirmed |
+| `[ASSUMPTION]` | Inferred — no source available |
+
+## Evidence Lifecycle
+
+1. Raw evidence is logged in `deliverables/phase-2/context-report.md`.
+2. Phases 3–6 reference evidence by its entry number in that report.
+3. Phase 7 audits that all cited entries are real and accessible.
+4. The final proposal carries only entries that passed Phase 7 audit.
+
+## What to Do When Evidence Is Missing
+
+Do not fill the gap by invention. Instead:
+- Record the gap as `[LACUNA DE EVIDÊNCIA — <description>]`
+- Note the gap in the phase's "Unresolved Assumptions" section
+- Propose a concrete step to close the gap (e.g., specific search query or interview question)

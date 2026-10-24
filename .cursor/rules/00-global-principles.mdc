@@ -1,0 +1,26 @@
+---
+description: Global operating principles for the AI-powered English conversation simulator project
+alwaysApply: true
+---
+
+# Global Operating Principles
+
+These principles apply to every agent and every session in this project.  
+They complement — and do not replace — `AGENTS.md`, which is the authoritative workflow document.
+
+## Core Rules
+
+1. **Read before writing.** Before producing any output, locate and read the relevant upstream deliverables listed in `PLAN.md`.
+
+2. **Do not invent content.** If source material, interviews, data, or requirements are not available, record an explicit assumption:
+   > `[ASSUMPTION — requires validation]: <description>`
+
+3. **Narrow scope.** Perform only the tasks assigned to the current phase and agent. Do not skip ahead.
+
+4. **Record decisions.** Any significant design or content decision must be logged using `templates/decision-log.md`.
+
+5. **Preserve honesty about enforcement.** If a constraint cannot be deterministically checked, state this explicitly rather than asserting compliance.
+
+6. **Do not reopen a completed phase** unless a failed acceptance check requires it. Phase reopening must be reflected in `PLAN.md`.
+
+7. **Stop at phase boundaries.** When a phase is complete, produce the handoff document and wait for human approval before continuing.

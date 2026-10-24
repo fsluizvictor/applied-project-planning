@@ -1,0 +1,43 @@
+---
+description: File ownership and change management for the project
+alwaysApply: true
+---
+
+# File Ownership & Change Management
+
+## Ownership Table
+
+| Path pattern | Owner | May be modified by |
+|-------------|-------|-------------------|
+| `AGENTS.md` | Harness | Human only |
+| `PLAN.md` | Harness | Human (status updates); agents (only the status cell of their own phase) |
+| `.cursor/rules/*.mdc` | Harness | Human only |
+| `.cursor/agents/*.md` | Harness | Human only |
+| `templates/*.md` | Harness | Human only |
+| `deliverables/phase-N/*` | Phase-N agent | Phase-N agent + human reviewer |
+| `deliverables/final-proposal/*` | Phase 8 | Human only |
+
+## Rules for Agents
+
+- **Do not modify harness files** (`AGENTS.md`, `PLAN.md` except own status, rules, agent defs, templates).
+- **Do not create files outside `deliverables/`** unless explicitly instructed by a human.
+- **Do not overwrite an existing deliverable** without first reading it and noting what changed in the agent report.
+- **Naming convention:** Use lowercase kebab-case for all file names (e.g., `phase-handoff.md`, `context-report.md`).
+
+## Conflict Resolution
+
+If an agent finds that a file it needs to write already exists:
+
+1. Read the existing file.
+2. Note any meaningful content that would be lost.
+3. Propose the change to the human before overwriting.
+4. Log the decision in `templates/decision-log.md`.
+
+## Git Hygiene
+
+Commit after each phase is marked `DONE`.  
+Commit message format:
+```
+phase-N: <short description of what was completed>
+```
+Example: `phase-1: requirements analysis complete — approved`

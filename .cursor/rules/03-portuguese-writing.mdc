@@ -1,0 +1,45 @@
+---
+description: Brazilian Portuguese writing standards for all academic deliverables
+alwaysApply: true
+---
+
+# Brazilian Portuguese Writing Standards
+
+## Scope
+
+These standards apply to **all academic deliverables** (everything under `deliverables/`).  
+Harness files (rules, agent definitions, templates, `PLAN.md`, `AGENTS.md`) are written in English.
+
+## Register & Style
+
+- Use formal academic register. Avoid colloquialisms, slang, and first-person singular.
+- Prefer third person or impersonal constructions:
+  - ✅ "Identificou-se que…"  
+  - ✅ "Os dados indicam que…"  
+  - ❌ "Eu acredito que…"
+- Sentences should be clear and complete. Avoid sentence fragments.
+- Prefer active voice except where passive is more natural academically.
+
+## Spelling & Grammar
+
+- Follow the 2009 Orthographic Agreement (Acordo Ortográfico de 2009) applied to Brazilian Portuguese.
+- Use curly quotes: `"texto"` (not straight quotes).
+- Abbreviations must be spelled out on first use, followed by the abbreviation in parentheses.
+
+## Paragraph & Section Structure
+
+- Each section must have a clear heading.
+- Each paragraph develops one central idea.
+- Transitions between paragraphs should be explicit.
+
+## Numbers & Dates
+
+- Numbers 1–9: write out in full unless in a table.
+- Numbers 10+: use digits.
+- Dates: `DD de mês de AAAA` (e.g., `15 de março de 2025`).
+- Percentages: `25%` (digit + symbol, no space).
+
+## Prohibited
+
+- Do not switch to English mid-deliverable.
+- Do not leave English placeholder text unfilled in a deliverable.

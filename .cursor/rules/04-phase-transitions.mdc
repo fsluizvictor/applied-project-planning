@@ -1,0 +1,45 @@
+---
+description: Phase transition rules and acceptance criteria enforcement
+alwaysApply: true
+---
+
+# Phase Transitions & Acceptance Criteria
+
+## Hard Rules
+
+1. **A phase cannot begin unless all upstream phases are `DONE`** in `PLAN.md`.
+2. **A phase is not `DONE` until its `acceptance-check.md` is completed and a human has approved.**
+3. **Never mark a phase `DONE` speculatively.** Only mark it after the human sends explicit approval.
+4. **Do not start the next phase in the same session** as the approval — wait for the next explicit instruction.
+
+## Acceptance Check Procedure
+
+At the end of every phase:
+
+1. Copy `templates/acceptance-check.md` to `deliverables/phase-N/acceptance-check.md`.
+2. Fill in every criterion: `PASS`, `FAIL`, or `PARTIAL + explanation`.
+3. If any criterion is `FAIL` or `PARTIAL`, the phase **cannot** be closed.
+4. Submit the completed check for human review.
+5. Wait for explicit human approval before updating `PLAN.md`.
+
+## Failed Check Protocol
+
+When an acceptance check fails:
+
+- Set the phase status in `PLAN.md` to `❌ FAILED`.
+- Identify which criteria failed.
+- The responsible agent receives the failure as its new input.
+- Produce a revised deliverable addressing only the failed criteria.
+- Re-run the full acceptance check.
+- A new `agent-report.md` must reference the failure that triggered the revision.
+
+## Phase Handoff
+
+Before stopping work on a phase, complete `templates/phase-handoff.md` and save it to  
+`deliverables/phase-N/phase-handoff.md`. The handoff document is the **only** structured input  
+the next phase's agent is guaranteed to receive — make it complete.
+
+## Enforcement Limitation
+
+Cursor agents cannot mechanically prevent a phase from starting if a human instructs it to proceed.  
+This rule is advisory for agents and is primarily enforced through human review of the acceptance check.

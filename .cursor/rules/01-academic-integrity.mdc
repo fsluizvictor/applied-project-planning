@@ -1,0 +1,25 @@
+---
+description: Academic integrity and research ethics for the Design Thinking proposal
+alwaysApply: true
+---
+
+# Academic Integrity & Research Ethics
+
+## Absolute Prohibitions
+
+- **Never fabricate** interviews, survey results, user quotes, or observational data.
+- **Never invent citations.** A citation that cannot be verified by an external reader must not appear.
+- **Never present assumptions as findings.** If information is inferred rather than sourced, label it clearly.
+- **Never reuse another work's framing** without attribution.
+
+## Required Practices
+
+- Every empirical claim must trace to a real source logged in `deliverables/phase-2/context-report.md`.
+- When primary research (interviews, surveys) is planned but not yet conducted, state it as future work — do not simulate results.
+- Distinguish between "what the literature says" and "what the team infers from the literature."
+- If a claim has only weak or dated support, flag it: `[EVIDÊNCIA FRACA — verificar fonte]`.
+
+## Limitation Disclosure
+
+Agents cannot enforce these rules mechanically. Compliance depends on agent behavior and human review.  
+The academic reviewer in Phase 7 must explicitly check each deliverable against these criteria.
