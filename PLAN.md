@@ -69,7 +69,7 @@ Each arrow represents a **hard dependency**: a phase may not begin until all ups
 
 | Field | Value |
 |-------|-------|
-| **Status** | 🟡 READY |
+| **Status** | ✅ DONE (approved by Luiz on 2026-10-25; `acceptance-check.md` has one PARTIAL criterion accepted as a documented evidence gap, not a failure) |
 | **Responsible Agent** | `context-researcher` |
 | **Inputs** | `deliverables/phase-1/phase-handoff.md` |
 | **Outputs** | `deliverables/phase-2/context-report.md`, `deliverables/phase-2/acceptance-check.md`, `deliverables/phase-2/phase-handoff.md` |
