@@ -1,9 +1,10 @@
 # Objetivo SMART — Fase 6: Solução SMART e Validação
 
 **Projeto:** Desafio e Solução — Simulador de Conversação em Inglês com IA
+**Curso:** Pós-Graduação em Arquitetura de Software e Soluções com IA
 **Agente responsável:** Solution Specifier
 **Data:** 25 de outubro de 2026
-**Versão:** 1.0
+**Versão:** 1.1 (atualizado com curso — UA-01)
 
 ---
 

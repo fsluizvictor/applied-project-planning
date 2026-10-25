@@ -1,9 +1,10 @@
 # Personas — Fase 3: Persona, Empatia e Observação
 
 **Projeto:** Desafio e Solução — Simulador de Conversação em Inglês com IA
+**Curso:** Pós-Graduação em Arquitetura de Software e Soluções com IA
 **Agente responsável:** Persona & Empathy Specialist
 **Data:** 25 de outubro de 2026
-**Versão:** 1.0
+**Versão:** 1.1 (atualizada com curso — UA-01)
 
 > ⚠️ **Aviso de integridade acadêmica:** Ambas as personas a seguir são **provisórias — baseadas em hipóteses e evidências secundárias**. Nenhuma entrevista, questionário ou observação direta com usuários reais foi conduzida. Os traços de cada persona foram **inferidos** a partir da literatura revisada na Fase 2 (`deliverables/phase-2/context-report.md`). Cada inferência está identificada com a respectiva tag (`[FONTE-SECUNDÁRIA]`, `[INFERÊNCIA]`, `[ASSUMPTION — requires validation]`).
 
@@ -12,6 +13,10 @@
 ## 1. Persona Principal — Ana Souza *(nome fictício)*
 
 ### 1.1 Perfil Comportamental
+
+**Figura 1 — Perfil Comportamental Ana Souza**
+
+![Perfil Comportamental Ana Souza](assets/persona-ana-souza-perfil.jpg)
 
 | Campo | Descrição | Tipo |
 |-------|-----------|------|
@@ -57,6 +62,10 @@
 ## 2. Persona Secundária — Bruno Lima *(nome fictício)*
 
 ### 2.1 Perfil Comportamental
+
+**Figura 3 — Perfil Comportamental Bruno Lima**
+
+![Perfil Comportamental Bruno Lima](assets/persona-bruno-lima-perfil.jpg)
 
 | Campo | Descrição | Tipo |
 |-------|-----------|------|

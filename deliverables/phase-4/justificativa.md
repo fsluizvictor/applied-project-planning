@@ -1,6 +1,7 @@
 # Justificativa do Projeto — Fase 4
 
 **Projeto:** Desafio e Solução — Simulador de Conversação em Inglês com IA
+**Curso:** Pós-Graduação em Arquitetura de Software e Soluções com IA
 **Agente responsável:** Hypothesis & Risk Analyst
 **Data:** 25 de outubro de 2026
 **Versão:** 1.0

@@ -1,15 +1,22 @@
 # Mapas de Empatia — Fase 3: Persona, Empatia e Observação
 
 **Projeto:** Desafio e Solução — Simulador de Conversação em Inglês com IA
+**Curso:** Pós-Graduação em Arquitetura de Software e Soluções com IA
 **Agente responsável:** Persona & Empathy Specialist
 **Data:** 25 de outubro de 2026
-**Versão:** 1.0
+**Versão:** 1.1 (atualizada com imagens visuais — UA-04)
 
 > ⚠️ **Aviso de integridade acadêmica:** Os mapas de empatia a seguir são **provisórios — baseados em inferências a partir de evidências secundárias**. Nenhuma observação direta, entrevista ou dado primário foi coletado. Cada elemento é classificado como `[FONTE-SECUNDÁRIA]`, `[INFERÊNCIA]` ou `[ASSUMPTION — requires validation]`. Falas na primeira pessoa são **reconstruções hipotéticas** baseadas em padrões documentados na literatura, **não citações reais de usuários** — esta distinção está declarada explicitamente em cada caso.
 
 ---
 
 ## Mapa de Empatia 1 — Ana Souza *(persona principal, provisória)*
+
+**Figura 2 — Mapa de Empatia Ana Souza**
+
+![Mapa de Empatia Ana Souza](assets/persona-ana-souza-empatia.jpg)
+
+> *Detalhamento completo por quadrante a seguir, com classificação de evidência por elemento.*
 
 ### Quadrante 1 — O que VÊ
 
@@ -70,6 +77,10 @@
 ---
 
 ## Mapa de Empatia 2 — Bruno Lima *(persona secundária, provisória)*
+
+**Figura 4 — Mapa de Empatia Bruno Lima**
+
+![Mapa de Empatia Bruno Lima](assets/persona-bruno-lima-empatia.jpg)
 
 > Versão resumida — elementos complementares aos da Persona 1. Somente as diferenças mais relevantes são detalhadas.
 

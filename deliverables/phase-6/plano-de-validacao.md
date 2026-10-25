@@ -1,9 +1,16 @@
 # Plano de Validação — Fase 6: Solução SMART e Validação
 
 **Projeto:** Desafio e Solução — Simulador de Conversação em Inglês com IA
+**Curso:** Pós-Graduação em Arquitetura de Software e Soluções com IA
 **Agente responsável:** Solution Specifier
 **Data:** 25 de outubro de 2026
-**Versão:** 1.0
+**Versão:** 1.1 (UA-05: plano hipotético — não será executado nesta fase acadêmica)
+
+---
+
+## Nota sobre a natureza deste plano
+
+> **Este é um plano hipotético de validação** — proposto como parte da proposta acadêmica, mas **não será executado nesta fase do projeto**. O objetivo é demonstrar que existe um método de teste rigoroso e coerente para validar a hipótese H-01 caso o protótipo seja desenvolvido em etapas posteriores. Todos os instrumentos, tarefas e critérios são propostas metodológicas, não relatos de testes realizados.
 
 ---
 
@@ -32,7 +39,7 @@ Testar a hipótese H-01: um protótipo de simulador de conversação por voz com
 | **Número de participantes** | 5 a 8 `[ALVO PROVISÓRIO — D-02]` — padrão para testes de usabilidade exploratórios (Nielsen, 1994) |
 | **Critérios de inclusão** | Inglês intermediário (autorrelato); tem necessidade de praticar para entrevistas em inglês; dispõe de dispositivo com microfone e internet estável |
 | **Critérios de exclusão** | Fluência avançada (não representa o público-alvo); sem microfone disponível; impossibilidade de consentir |
-| **Recrutamento** | `[ASSUMPTION — requires validation — D-05]` — método de recrutamento a definir com o orientador (ex.: colegas de turma, LinkedIn, redes profissionais) |
+| **Recrutamento** | Plano hipotético — não será executado nesta fase. Proposta de recrutamento: colegas de curso, LinkedIn ou redes profissionais de tecnologia, mediante convite voluntário e consentimento informado. |
 
 ---
 

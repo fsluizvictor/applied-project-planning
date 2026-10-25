@@ -58,11 +58,11 @@ Os 11 critérios listados em `phases/07_revisao_final.md` são auditados a segui
 
 | Campo | Avaliação |
 |-------|-----------|
-| **Status** | ⚠️ PARTIAL |
-| **Localização** | `deliverables/phase-1/requirements.md` Seção 4.1; `deliverables/phase-2/context-report.md` Seção 9 |
-| **Achados** | A área do conhecimento do curso (suposição A-08) **permanece indefinida**. Nenhuma fase resolveu essa lacuna — depende de informação a ser fornecida pelo orientador ou pela instituição. O projeto foi conduzido de forma agnóstica em relação à área do curso. |
-| **Severidade** | **Alta** — este é um critério explícito de avaliação. A ausência de declaração da área do conhecimento do curso pode ser considerada uma falha de completude na proposta final. |
-| **Correção recomendada** | **⚠️ Requer ação do usuário (Luiz):** informar a área do conhecimento do curso para que este critério possa ser preenchido. Enquanto não informado, a proposta final deve declarar explicitamente: "A área do conhecimento do curso não foi fornecida ao agente responsável — este campo deve ser preenchido pelo autor antes da submissão." |
+| **Status** | ✅ PASS *(resolvido — UA-01)* |
+| **Localização** | Todos os entregáveis atualizados com o campo **Curso** |
+| **Achados** | Curso informado pelo autor: **Pós-Graduação em Arquitetura de Software e Soluções com IA**. Área do conhecimento: Tecnologia da Informação — Arquitetura de Software. A solução proposta (simulador de conversação com IA) é diretamente alinhada à área do curso: envolve design de sistema com componentes de IA (LLM, ASR, TTS), especificação de arquitetura de solução e validação de protótipo. |
+| **Severidade** | Nenhuma — critério resolvido. |
+| **Correção recomendada** | Nenhuma. Na proposta final, incluir a área do curso no cabeçalho e mencionar explicitamente o alinhamento entre a solução proposta (arquitetura de IA conversacional) e a área do conhecimento da pós-graduação. |
 
 ---
 
@@ -202,7 +202,7 @@ Os 11 critérios listados em `phases/07_revisao_final.md` são auditados a segui
 
 | # | Problema | Severidade | Fase | Pode ser resolvido pelo agente? |
 |---|----------|-----------|------|--------------------------------|
-| P-01 | Área do conhecimento do curso (A-08) indefinida | **Crítico** | Transversal | ❌ Não — requer informação do usuário |
+| P-01 | Área do conhecimento do curso (A-08) indefinida | ~~**Crítico**~~ **Resolvido** | Transversal | ✅ Resolvido — Pós-Graduação em Arquitetura de Software e Soluções com IA (UA-01) |
 | P-02 | HMW statements ausentes na Fase 4 | **Alto** | Fase 4 | ✅ Sim — pode ser adicionado |
 | P-03 | Convenção GUT não confirmada (D-01) | **Médio** | Fase 4 | ⚠️ Parcialmente — pode-se apresentar ambas as convenções |
 | P-04 | Formato visual das personas (A-09) indefinido | **Médio** | Fase 3 | ⚠️ Parcialmente — formato markdown é funcional; visual depende de decisão do autor |
@@ -242,7 +242,7 @@ O `registro-de-riscos.md` e `hipoteses.md` já explicam a convenção GUT adotad
 | 1.1.1 Clareza e Estrutura | ✅ PASS (pendente consolidação Fase 8) |
 | 1.1.2 Análise do Contexto | ✅ PASS (lacunas declaradas) |
 | 1.1.3 Desafio (Problema) | ✅ PASS (refinamento sugerido na consolidação) |
-| 1.1.4 Área do Conhecimento do Curso | ⚠️ PARTIAL — **requer informação do usuário** |
+| 1.1.4 Área do Conhecimento do Curso | ✅ PASS — Pós-Graduação em Arquitetura de Software e Soluções com IA |
 | 1.1.5 Persona + Mapa de Empatia | ✅ PASS (formato visual: decisão do autor) |
 | 1.1.6 Justificativa | ✅ PASS |
 | 1.1.7 Hipótese | ✅ PASS (D-01 a confirmar) |
@@ -251,9 +251,9 @@ O `registro-de-riscos.md` e `hipoteses.md` já explicam a convenção GUT adotad
 | 1.1.10 Priorização de Ideias | ✅ PASS |
 | 1.1.11 Apresentação e Estilo | ⚠️ PARTIAL (depende de formatação da Fase 8) |
 
-**Problemas críticos:** 1 (P-01 — área do curso)
+**Problemas críticos:** ~~1~~ **0** (P-01 resolvido — UA-01)
 **Problemas altos:** 1 (P-02 — HMW statements — corrigido em D-C-01)
-**Problemas médios:** 4 (P-03 a P-06 — parcialmente tratados ou pendentes de informação externa)
-**Problemas baixos:** 1 (P-08)
+**Problemas médios:** 3 (P-03 a P-05 — D-01 a confirmar; D-04 prazo a confirmar; UA-04 imagens geradas ✅)
+**Problemas baixos:** 1 (P-08 — formatação final)
 
 **Estado geral da documentação:** **PRONTO PARA REVISÃO HUMANA** com as ressalvas acima. A proposta final (Fase 8) pode ser produzida após a aprovação humana desta fase, desde que P-01 (área do curso) seja informada pelo autor.
