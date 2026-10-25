@@ -48,7 +48,7 @@ Each arrow represents a **hard dependency**: a phase may not begin until all ups
 
 | Field | Value |
 |-------|-------|
-| **Status** | 🔵 IN PROGRESS |
+| **Status** | ✅ DONE |
 | **Responsible Agent** | `requirements-analyst` |
 | **Inputs** | `AGENTS.md`, `PLAN.md`, project brief (provided by human) |
 | **Outputs** | `deliverables/phase-1/requirements.md`, `deliverables/phase-1/acceptance-check.md`, `deliverables/phase-1/phase-handoff.md` |
@@ -69,7 +69,7 @@ Each arrow represents a **hard dependency**: a phase may not begin until all ups
 
 | Field | Value |
 |-------|-------|
-| **Status** | 🔴 BLOCKED (awaits Phase 1 DONE) |
+| **Status** | 🟡 READY |
 | **Responsible Agent** | `context-researcher` |
 | **Inputs** | `deliverables/phase-1/phase-handoff.md` |
 | **Outputs** | `deliverables/phase-2/context-report.md`, `deliverables/phase-2/acceptance-check.md`, `deliverables/phase-2/phase-handoff.md` |

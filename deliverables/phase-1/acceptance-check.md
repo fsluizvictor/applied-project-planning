@@ -10,8 +10,8 @@
 | **Agent** | Requirements Analyst |
 | **Check date** | 2026-10-25 |
 | **Revision** | 1 (primeira tentativa) |
-| **Human reviewer** | (a preencher pelo revisor) |
-| **Human approval date** | (a preencher na aprovação) |
+| **Human reviewer** | Luiz |
+| **Human approval date** | 2026-10-25 |
 
 ---
 
@@ -69,9 +69,9 @@ By approving this document, the human reviewer confirms:
 - They authorize Phase 2 to begin (when explicitly instructed).
 - They acknowledge the PARTIAL on criterion 3 and the missing source documents.
 
-**Human approval:** [ ] Approved / [ ] Rejected — requires revision  
-**Signature / Name:** ___________________  
-**Date:** ___________________
+**Human approval:** [x] Approved  
+**Signature / Name:** Luiz  
+**Date:** 2026-10-25
 
 ---
 

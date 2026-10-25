@@ -27,8 +27,8 @@
 - [x] `templates/decision-log.md`
 - [x] `README.md`
 - [x] Todas as seis regras `.cursor/rules/*.mdc` (aplicadas como contexto)
-- [ ] PDF de instruções da disciplina — **NÃO ENCONTRADO** no workspace
-- [ ] PDF de exemplo de proposta — **NÃO ENCONTRADO** no workspace
+- [ ] PDF de instruções da disciplina (rubrica) — **NÃO ENCONTRADO** no workspace
+- [x] `Exemplo - Desafio - Solução.pdf` — **LIDO** (proposta de exemplo aprovada, ~11 páginas)
 
 ---
 
@@ -61,7 +61,7 @@
 |---|----------|----------------|
 | A-01 | Prazo de entrega da disciplina desconhecido | `requirements.md`, Seção 7 |
 | A-02 | Rubrica completa com descritores de nível não disponível | `requirements.md`, Seção 5 e 7; `source-inventory.md` |
-| A-03 | PDF de instruções e exemplo não localizados no workspace | `source-inventory.md` |
+| A-03 | ~~PDF de exemplo não localizado~~ — ✅ FECHADA (PDF lido em 25/10/2026) | `source-inventory.md` |
 | A-04 | Nome da disciplina, instituição e semestre não informados | `requirements.md`, Seção 7 |
 | A-05 | Trabalho individual ou em grupo não especificado | `requirements.md`, Seção 7 |
 | A-06 | Número mínimo de referências bibliográficas não informado | `requirements.md`, Seção 7 |
@@ -73,7 +73,7 @@
 ## Limitations & Honest Disclosures
 
 - **Critérios parcialmente mapeados:** Sem a rubrica completa, os descritores de desempenho de cada critério não podem ser verificados. O mapeamento baseia-se exclusivamente nos rótulos fornecidos em `phases/01_planejamento.md`.
-- **PDF de instruções ausente:** A instrução de "localizar e ler as instruções da disciplina e o PDF de exemplo" não pôde ser cumprida porque esses documentos não existem no workspace. Foram registrados como fontes não encontradas (`source-inventory.md`).
+- **PDF de exemplo lido:** O arquivo `Exemplo - Desafio - Solução.pdf` foi lido integralmente e usado para inferir a estrutura do documento final e o formato de cada seção. O PDF de instruções/rubrica (M-01) permanece ausente.
 - **Integridade não pode ser mecanicamente verificada:** A conformidade com as regras de integridade acadêmica depende do comportamento do agente e da revisão humana, conforme declarado em `01-academic-integrity.mdc`.
 - **`AGENTS.md` não atualizado:** Os placeholders dos 11 critérios em `AGENTS.md` não foram preenchidos porque o arquivo é de propriedade exclusiva do harness (humano). Ação manual necessária.
 
@@ -85,10 +85,10 @@
 |----------|------------------------|-------|
 | Escopo documentado sem invenção | PASS | Escopo baseado em fontes disponíveis; lacunas sinalizadas |
 | Pelo menos 2 grupos de stakeholders identificados | PASS | Quatro grupos identificados na Seção 3 |
-| Pelo menos uma restrição por critério de avaliação | PARTIAL | Restrições gerais documentadas (Seção 4); restrições específicas por critério constam da tabela da Seção 5, mas são limitadas pela ausência da rubrica completa |
+| Pelo menos uma restrição por critério de avaliação | PASS | Restrições específicas por critério documentadas em `requirements.md`, Seção 5.2, com base no PDF de exemplo. Descritores de nível (rubrica) ausentes — registrado em A-02 |
 | Seção de premissas não resolvidas presente e não vazia | PASS | Oito premissas registradas na Seção 7 |
 | Nenhuma entrevista, citação ou estatística fabricada | PASS | Nenhuma fonte bibliográfica externa citada nesta fase |
 | Todos os 11 critérios endereçados ou sinalizados como TBD | PASS | Todos os 11 mapeados na Seção 5 com sinalização de lacuna de evidência nos descritores |
 | Documento redigido em português brasileiro | PASS | Todos os entregáveis de fase em português; arquivos de harness em inglês |
 
-> Nota: A auto-avaliação não substitui a revisão humana. O critério PARTIAL é consequência direta de fontes ausentes, não de omissão do agente.
+> Nota: A auto-avaliação não substitui a revisão humana.
