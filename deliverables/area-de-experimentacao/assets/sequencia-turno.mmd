@@ -1,0 +1,20 @@
+sequenceDiagram
+    actor Pessoa
+    participant UI as Interface web (React)
+    participant API as API local (Python 3.12, BFF)
+    participant ASR as gemini-3.5-transcribe
+    participant LLM as gemini-3.5-flash-lite
+    participant TTS as gemini-3.8-flash-lite-tts
+
+    Pessoa->>UI: Fala no microfone
+    UI->>API: POST /api/sessions/{id}/turns (áudio)
+    API->>ASR: generateContent, modo VERBATIM, en-US
+    Note over ASR: Sem instrução de sistema
+    ASR-->>API: Transcrição (pode vir vazia)
+    API->>LLM: prompts/entrevistador.txt e histórico em memória
+    LLM-->>API: Fala da entrevistadora
+    API->>TTS: generateContent REST, voz Kore
+    TTS-->>API: audio/wav
+    API-->>UI: Texto e áudio da entrevistadora
+    UI->>Pessoa: Reproduz a voz
+    Note over API: Descarta o áudio do usuário. Não grava a transcrição em disco.

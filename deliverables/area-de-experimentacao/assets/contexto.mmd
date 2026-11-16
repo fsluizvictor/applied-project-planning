@@ -1,0 +1,6 @@
+flowchart LR
+  pessoa["Pessoa que executa o teste\n(microfone e alto-falantes locais)"]
+  sistema["Simulador de conversação em inglês\nProva de conceito local"]
+  gemini["API Gemini\nCamada gratuita"]
+  pessoa -->|"Fala em inglês e ouve a entrevistadora"| sistema
+  sistema -->|"generateContent\nchave só no processo da API"| gemini

@@ -13,9 +13,15 @@ Este arquivo condensa o material das fases 1 a 7 no padrão do PDF `Exemplo - De
 | Figura 3 — Perfil Comportamental Bruno Lima | `deliverables/phase-3/assets/persona-bruno-lima-perfil.jpg` |
 | Figura 4 — Mapa de Empatia Bruno Lima | `deliverables/phase-3/assets/persona-bruno-lima-empatia.jpg` |
 | Figura 5 — Proposta de Valor | montar no canvas visual do template a partir da subseção 1.1.3 |
+| Figura 6 — Definição da Sprint 1 | `deliverables/cronograma-sprints/sprint-1.png` |
+| Figura 7 — Definição da Sprint 2 | `deliverables/cronograma-sprints/sprint-2.png` |
+| Figura 8 — Interface local | `deliverables/area-de-experimentacao/assets/interface-local.png` |
+| Figura 9 — Diagrama de contexto | `deliverables/area-de-experimentacao/assets/contexto.png` |
+| Figura 10 — Diagrama de contêineres | `deliverables/area-de-experimentacao/assets/conteineres.png` |
+| Figura 11 — Diagrama de sequência de um turno | `deliverables/area-de-experimentacao/assets/sequencia-turno.png` |
 | CANVAS do Projeto Aplicado | montar no canvas visual do template a partir da seção 1 |
 
-**Não inventar evidências nas seções 2 e 3.** As sprints ainda não foram executadas. O capítulo 1 está completo; os capítulos 2 e 3 trazem apenas o planejamento.
+**Capítulo 2:** as Sprints 1 e 2 foram executadas. O texto pronto para colar, com os pontos de inserção das figuras, está em `deliverables/area-de-experimentacao/capitulo-2.md`. A Sprint 3 ainda não ocorreu: não inventar sessão-piloto, nota de privacidade nem DAS versão 1.
 
 ---
 
@@ -46,7 +52,7 @@ Inserir a figura do CANVAS do template e preencher os blocos com o resumo abaixo
 | **Objetivo SMART** | Desenvolver e testar um protótipo de voz (entrevista de emprego em tecnologia), medido por SUS ≥ 68, conclusão de tarefa ≥ 60% e redução de ansiedade na maioria dos participantes, em prazo a confirmar com o orientador. |
 | **Premissas e Restrições** | Dispositivo com microfone e internet; APIs de ASR, LLM e TTS acessíveis; áudios não retidos além da sessão; ASR avaliado para sotaque brasileiro; o protótipo não afirma melhorar fluência. |
 | **Backlog** | Essenciais: F01 seleção de cenário, F03 conversa por voz, F04 resposta oral da IA, F05 feedback pós-conversa. |
-| **Área de experimentação** | Três sprints planejadas (tecnologias → MVP → teste). Evidências de execução ainda não existem. |
+| **Área de experimentação** | Sprint 1 (requisitos, combinação, instruções, DAS 0.1) e Sprint 2 (interface, API local, três blocos, diagramas) executadas. Sprint 3 (sessão-piloto) ainda não ocorreu. A transcrição do primeiro turno real veio vazia. |
 
 ---
 
@@ -298,7 +304,7 @@ Interface web em React, Vue ou Angular. API local que isola a chave do modelo. I
 
 Texto para colar no documento:
 
-O projeto está dividido em três sprints de sete dias corridos, de 2 a 22 de novembro de 2026. Nenhuma sprint foi executada até esta data. A publicação em nuvem não é entrega obrigatória: entra na Sprint 3 somente se o fluxo local já estiver concluído e ainda houver tempo.
+O projeto está dividido em três sprints de sete dias corridos, de 2 a 22 de novembro de 2026. As Sprints 1 e 2 foram executadas; a Sprint 3 permanece pendente. A publicação em nuvem não é entrega obrigatória: entra na Sprint 3 somente se o fluxo local já estiver concluído e ainda houver tempo.
 
 Cada sprint produz quatro entregas. O quadro Kanban, em Trello, Planner ou ferramenta equivalente, registra o andamento nas colunas Backlog do Projeto, Backlog da Sprint, A Fazer, Em Andamento e Concluído.
 
@@ -350,40 +356,19 @@ O print do quadro na abertura de cada sprint, as capturas da execução e a retr
 
 ## 2. Área de Experimentação
 
-Esta seção do template exige evidências de planejamento, execução e resultado de cada sprint. **As sprints ainda não foram executadas.** Não há códigos, capturas de tela, testes com usuários nem retrospectivas reais a anexar. Preencher os itens abaixo somente após a execução. O número de artefatos deve ser igual ao número de requisitos da sprint.
+Texto completo para colar, com os pontos de inserção das figuras 6 a 11: `deliverables/area-de-experimentacao/capitulo-2.md`.
 
-### 2.1 Sprint 1
-
-**2.1.1 Solução.** *A preencher após a execução.*  
-Evidência de planejamento: quadro da Sprint 1.  
-Evidência de execução (sugerida): lista de requisitos; registro da combinação escolhida, com o teste da própria voz; instruções de sistema.  
-Evidência de resultados: DAS parcial com contexto, premissas e restrições.
-
-**2.1.2 Lições aprendidas / Retrospectiva.** *A preencher.* Registrar o que não foi validado e o que exigiu ajuste de rota.
-
-### 2.2 Sprint 2
-
-**2.2.1 Solução.** *A preencher após a execução.*  
-Evidências sugeridas: capturas do fluxo local (cenário, turno de voz e feedback em três blocos); diagramas de contexto, de contêineres e de sequência.
-
-**2.2.2 Lições aprendidas / Retrospectiva.** *A preencher.*
-
-### 2.3 Sprint 3
-
-**2.3.1 Solução.** *A preencher após a execução.*  
-Evidências sugeridas: registro da sessão-piloto (duração, turnos reconhecidos e feedback); nota de privacidade; DAS versão 1. A publicação em nuvem só é evidência se tiver sido feita. Não antecipar números.
-
-**2.3.2 Lições aprendidas / Retrospectiva.** *A preencher.*
+Síntese: a Sprint 1 fechou requisitos, combinação (React, Python 3.12 BFF, Gemini gratuito), instruções e DAS 0.1. O teste de 10 de novembro de 2026 validou diálogo e síntese; a transcrição veio vazia. A Sprint 2 implementou a tela local, a API do turno, o retorno em três blocos e os diagramas no DAS 0.2. Em 15 de novembro de 2026 o primeiro turno real também devolveu transcrição vazia; a captura não foi repetida. A Sprint 3 não foi executada.
 
 ---
 
 ## 3. Considerações Finais
 
-Seção a completar **depois** das sprints. O texto abaixo registra apenas o estado atual da proposta, para não deixar o capítulo em branco nem fabricar resultado.
+Seção a completar **depois** da Sprint 3. O texto abaixo registra o estado após as Sprints 1 e 2, sem fabricar a sessão-piloto.
 
 ### 3.1 Resultados
 
-Até o momento, o resultado do Projeto Aplicado é a **especificação fundamentada** do desafio e da solução: contexto com fontes verificáveis, personas e mapas de empatia, justificativa com separação entre benefício esperado e resultado demonstrado, hipóteses GUT refutáveis, riscos, MVP e plano de validação. Não há resultado empírico de uso do protótipo. Essa ausência é limitação de etapa, não lacuna disfarçada.
+Até o momento, o resultado do Projeto Aplicado é a especificação fundamentada do desafio e da solução, mais a prova de conceito local das Sprints 1 e 2: a tela abre com o cenário único, a API local devolve texto e áudio da entrevistadora, e o encerramento gera os três blocos. Não há sessão-piloto de cinco a dez minutos nem transcrição de uma frase falada de propósito: os dois testes de voz (10 e 15 de novembro de 2026) devolveram transcrição vazia. Essa ausência é limitação observada, não lacuna disfarçada. O projeto não afirma ganho de fluência nem reconhecimento de sotaque brasileiro.
 
 Pontos positivos do processo: rastreabilidade problema → persona → hipótese → backlog → métricas; recusa de percentuais sem fonte; descarte de artigo retratado.
 
@@ -396,7 +381,7 @@ A contribuição atual é um recorte de arquitetura de solução com IA conversa
 ### 3.3 Próximos passos
 
 1. Confirmar com o orientador o prazo (elemento T), a fórmula GUT e se o teste com usuários será executado nesta edição do curso.  
-2. Executar as três sprints e anexar evidências no capítulo 2.  
+2. Executar a Sprint 3 (sessão-piloto, nota de privacidade e DAS versão 1) e anexar as evidências no capítulo 2.  
 3. Se H-01 for suportada, avaliar um segundo cenário (reunião) e a adaptação de nível (F02).  
 4. Se H-01 for refutada, redesenhar interação ou tecnologia antes de qualquer expansão.  
 5. Pesquisa primária futura: situar qual cenário o público prioriza e se o sotaque brasileiro é reconhecido de forma aceitável.

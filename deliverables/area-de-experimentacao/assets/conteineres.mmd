@@ -1,0 +1,10 @@
+flowchart TB
+  pessoa["Pessoa que executa o teste"]
+  subgraph maquina["Máquina local"]
+    web["Interface web\nReact — cenário único"]
+    api["API local\nPython 3.12, BFF"]
+  end
+  gemini["API Gemini\ntranscrição, diálogo e síntese"]
+  pessoa -->|"Abre a tela e fala no microfone"| web
+  web -->|"HTTP local: áudio do turno"| api
+  api -->|"Reconhecimento, diálogo e síntese"| gemini
