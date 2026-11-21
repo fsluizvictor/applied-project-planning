@@ -284,7 +284,7 @@ def c1_contexto() -> None:
     d.edge([(360, 335), (560, 335)], "Responde por voz e\nouve a entrevistadora", "[navegador, microfone]", at=(460, 300))
     d.edge([(900, 335), (1100, 335)], "Envia áudio e texto;\nrecebe transcrição,\nfala e áudio", "[HTTPS, generateContent]", at=(1000, 292))
     d.note(60, 500, 1340, 110, "Fora do contexto da versão 1 (decisão de escopo)", [
-        "Não há provedor de identidade, banco de dados, repositório de conteúdo nem outros cenários. A camada gratuita pode usar o conteúdo enviado para melhoria dos produtos do provedor (GOOGLE, 2026); por isso a sessão usa somente a voz de quem executa o teste (RC-09).",
+        "Não há provedor de identidade, banco de dados, repositório de conteúdo nem outros cenários. A camada gratuita pode usar o conteúdo enviado para melhoria dos produtos do provedor (GOOGLE, 2026a); por isso a sessão usa somente a voz de quem executa o teste (RC-09).",
     ])
     d.legend(660, [("person", "Pessoa"), ("system", "Sistema em escopo"), ("external", "Sistema externo"),
                    ("edge", "Relação (sentido da seta)")])
@@ -486,32 +486,44 @@ def implantacao_aws() -> None:
 def mapa_evolucao() -> None:
     d = Diagram(
         "06-mapa-de-evolucao",
-        1640,
-        700,
+        1720,
+        900,
         "Mapa de evolução — o que entra na arquitetura e sob qual condição",
-        "Os elementos tracejados não pertencem à versão 1; cada um depende de um gatilho verificável.",
+        "Os elementos tracejados não pertencem à versão 1; cada coluna depende de um gatilho verificável.",
     )
+    w, top, h = 380, 110, 640
     cols = [
-        (40, "container", False, "Versão 1 — prova de conceito local", "[implementada e validada na sessão-piloto]", [
+        (40, "container", False, "Versão 1 — prova de conceito", "[implementada e validada na sessão-piloto]", [
             "Interface web em React; API BFF em Python 3.12",
             "Turno síncrono em cascata: ASR → LLM → TTS",
             "Histórico só em memória; áudio descartado após o ASR",
             "Retorno em três blocos ao encerrar",
             "Provedor único: API Gemini, camada gratuita",
         ]),
-        (580, "infra", False, "Versão 1.1 — publicação opcional", "[gatilho: entregas 1 a 3 da Sprint 3 concluídas e tempo disponível]", [
-            "CloudFront e S3 para a interface",
-            "API Gateway HTTP API e Lambda para a API",
-            "Parameter Store para a chave; CloudWatch para latência por etapa",
-            "API sem estado; uso restrito a quem executa o teste (RC-09)",
-            "Portas separadas para ASR, LLM e TTS no código",
+        (460, "infra", False, "Versão 1.1 — publicação e ajustes", "[gatilho: entregas 1 a 3 da Sprint 3 concluídas]", [
+            "CloudFront, S3, API Gateway HTTP API e Lambda; API sem estado",
+            "Parameter Store para a chave; CloudWatch com latência por etapa",
+            "Portas separadas para ASR, LLM e TTS",
+            "Vocabulário personalizado no ASR e fala delimitada na instrução",
+            "Retorno com saída estruturada e regra fixa para transcrição vazia",
+            "Escalas do CEFR no contexto do retorno, sem busca",
         ]),
-        (1120, "future", True, "Versão 2 — produto", "[gatilho: teste com usuários externos e orçamento]", [
-            "Camada paga do provedor ou Amazon Transcribe, Bedrock e Polly, para que o conteúdo não seja usado em treino",
-            "Amazon Cognito, se houver contas de usuário",
-            "Amazon DynamoDB com consentimento e TTL, se houver histórico",
-            "Amazon SQS e worker, se a avaliação demorar além do turno",
-            "Streaming por frase ou canal bidirecional, se a latência medida exigir",
+        (880, "future", True, "Versão 2 — MVP na AWS", "[gatilho: usuários externos, orçamento e consentimento]", [
+            "CloudFront com WAF como entrada única; Cognito para contas",
+            "Serviço de conversa em Fargate com WebSocket",
+            "Transcribe em streaming, Bedrock e Polly por frase",
+            "Roteiro da entrevista controlado por estados no código",
+            "DynamoDB com consentimento e TTL; SQS e avaliador assíncrono",
+            "Retorno fundamentado com RAG (Knowledge Bases) e Guardrails",
+            "Opt-out de Transcribe e Polly via AWS Organizations",
+        ]),
+        (1300, "future", True, "Pós-MVP — melhoria contínua", "[gatilho: medição no conjunto de avaliação]", [
+            "Busca híbrida e reordenação, se a recuperação falhar",
+            "Avaliação contínua com modelo juiz calibrado",
+            "Roteamento de modelos por etapa, se custo ou qualidade exigir",
+            "Modelo de voz para voz, se a latência medida exigir",
+            "Novos cenários e banco de perguntas por cargo e nível",
+            "Histórico entre sessões, só com consentimento explícito",
         ]),
     ]
     for x, kind, dashed, title, trigger, items in cols:
@@ -521,26 +533,150 @@ def mapa_evolucao() -> None:
         head_text = st["text"] if kind not in ("infra",) else "#232F3E"
         if kind == "future":
             head_fill, head_text = "#F1F3F5", "#3A4250"
-        d.parts.append(f'<rect x="{x}" y="110" width="480" height="440" rx="14" fill="#FFFFFF" stroke="{st["stroke"]}" stroke-width="2"{dash}/>')
-        d.parts.append(f'<path d="M{x},124 a14,14 0 0,1 14,-14 h452 a14,14 0 0,1 14,14 v86 h-480 z" fill="{head_fill}"/>')
-        d.text(x + 240, 148, title, 16, head_text, bold=True)
-        ty = 172
-        for line in wrap(trigger, 440, 12):
-            d.text(x + 240, ty, line, 12, head_text, italic=True)
+        d.parts.append(f'<rect x="{x}" y="{top}" width="{w}" height="{h}" rx="14" fill="#FFFFFF" stroke="{st["stroke"]}" stroke-width="2"{dash}/>')
+        d.parts.append(f'<path d="M{x},{top + 14} a14,14 0 0,1 14,-14 h{w - 28} a14,14 0 0,1 14,14 v86 h-{w} z" fill="{head_fill}"/>')
+        d.text(x + w / 2, top + 38, title, 16, head_text, bold=True)
+        ty = top + 62
+        for line in wrap(trigger, w - 40, 12):
+            d.text(x + w / 2, ty, line, 12, head_text, italic=True)
             ty += 16
-        cy = 250
+        cy = top + 140
         for item in items:
-            lines = wrap(item, 420, 13.5)
-            d.parts.append(f'<circle cx="{x + 30}" cy="{cy - 5}" r="4" fill="{st["stroke"]}"/>')
+            lines = wrap(item, w - 70, 13.5)
+            d.parts.append(f'<circle cx="{x + 26}" cy="{cy - 5}" r="4" fill="{st["stroke"]}"/>')
             for line in lines:
-                d.text(x + 46, cy, line, 13.5, "#1F2937", anchor="start")
+                d.text(x + 40, cy, line, 13.5, "#1F2937", anchor="start")
                 cy += 20
-            cy += 18
-    d.edge([(520, 330), (580, 330)])
-    d.edge([(1060, 330), (1120, 330)], dashed=True)
-    d.note(40, 580, 1560, 70, "Princípio de evolução", [
+            cy += 16
+    d.edge([(420, 400), (460, 400)])
+    d.edge([(840, 400), (880, 400)], dashed=True)
+    d.edge([(1260, 400), (1300, 400)], dashed=True)
+    d.note(40, 780, 1640, 74, "Princípio de evolução", [
         "Cada elemento novo entra somente quando um requisito, uma medição ou uma decisão registrada o justificar; a versão 1 não depende de nenhum deles.",
     ])
+    d.save()
+
+
+def mvp_aws() -> None:
+    d = Diagram(
+        "07-arquitetura-mvp-aws",
+        2000,
+        1440,
+        "Arquitetura-alvo do MVP na AWS — implantação e serviços",
+        "Proposta para a versão 2, não implantada. Caminho quente em tempo real e retorno assíncrono fundamentado.",
+    )
+    d.box(40, 230, 200, 130, "person", "Pessoa candidata", "[Navegador]", "Fala, ouve e lê o retorno")
+    d.boundary(290, 100, 1680, 1230, "Amazon Web Services", "[Conta do MVP em AWS Organizations — região a definir]", color="#E07B00")
+
+    d.boundary(320, 150, 330, 960, "Borda e identidade", color="#B7791F", dash="4 4")
+    d.box(350, 200, 270, 170, "infra", "Amazon CloudFront + AWS WAF", "[Entrada única, HTTPS]",
+          "/* para o S3, /api/* para o API Gateway, /ws para o ALB; limite de taxa por IP")
+    d.box(350, 420, 270, 140, "infra", "Amazon S3", "[Bucket privado, OAC]", "Interface React compilada")
+    d.box(350, 680, 270, 150, "infra", "Amazon Cognito", "[Grupo de usuários, OIDC]", "Conta, login e registro do consentimento")
+
+    d.boundary(700, 150, 1240, 430, "Caminho quente — turno de voz em tempo real", color="#B7791F", dash="4 4")
+    d.box(730, 230, 230, 150, "infra", "Application Load Balancer", "[WebSocket, TLS]", "Mantém a conexão do turno")
+    d.box(1010, 200, 340, 340, "infra-app", "Serviço de conversa", "[ECS Fargate — Python 3.12, FastAPI]",
+          "Roteiro por estados (apresentação → projeto → dificuldade → encerramento). Portas ASR, LLM e TTS. "
+          "Recebe áudio PCM em partes, nunca o grava, e devolve a voz frase a frase")
+    d.box(1430, 190, 240, 105, "infra", "Amazon Transcribe", "[Streaming, en-US]", "Vocabulário personalizado")
+    d.box(1430, 310, 240, 105, "infra", "Amazon Bedrock", "[Modelo leve de diálogo]", "ConverseStream; saída curta")
+    d.box(1430, 430, 240, 105, "infra", "Amazon Polly", "[Voz neural]", "Síntese por frase")
+    d.box(1700, 250, 210, 230, "infra", "Bedrock Guardrails", "[Política da aplicação]",
+          "Ataque de prompt na fala marcada; tópicos negados; filtro de saída")
+
+    d.boundary(700, 620, 1240, 490, "Sessões e retorno assíncrono", color="#B7791F", dash="4 4")
+    d.box(730, 680, 230, 150, "infra", "Amazon API Gateway", "[HTTP API, autorizador JWT]", "Sessões, consentimento e retorno")
+    d.box(1060, 680, 250, 150, "infra", "AWS Lambda", "[API de sessões — Python]", "Cria e encerra sessão; enfileira a avaliação")
+    d.box(730, 900, 230, 150, "store", "Amazon DynamoDB", "[Tabela única, TTL, KMS]", "Sessão, consentimento, turnos em texto e retorno")
+    d.box(1060, 900, 250, 120, "infra", "Amazon SQS", "[Fila + fila de mensagens mortas]", "Um job por sessão encerrada")
+    d.box(1380, 680, 260, 150, "infra", "Bedrock Knowledge Bases", "[Recuperação semântica]", "Descritores CEFR e critérios da entrevista")
+    d.box(1690, 680, 230, 150, "store", "S3 + S3 Vectors", "[Corpus público e índice]", "Nunca contém transcrições")
+    d.box(1380, 900, 260, 180, "infra-app", "Avaliador do retorno", "[AWS Lambda — Python]",
+          "Pré-checagem → recuperação → extração de evidências → validação → redação → verificação")
+    d.box(1690, 900, 230, 180, "infra", "Bedrock + Guardrails", "[Modelo de retorno]", "Saída estruturada; checagem de fundamentação")
+
+    d.box(320, 1160, 330, 140, "infra", "AWS KMS", "[Chaves gerenciadas]", "Criptografia de DynamoDB, S3 e fila")
+    d.box(700, 1160, 380, 140, "infra", "CloudWatch + AWS X-Ray", "[OpenTelemetry]", "Latência e tokens por etapa, versão do prompt; sem texto da fala")
+    d.box(1120, 1160, 380, 140, "infra", "Amazon Bedrock Evaluations", "[Offline, modelo juiz]", "Fidelidade e citações no conjunto de avaliação")
+    d.box(1540, 1160, 380, 140, "infra", "AWS Organizations", "[Política de opt-out de IA]", "Transcribe e Polly sem uso do conteúdo para melhoria")
+
+    d.edge([(240, 290), (350, 290)], "HTTPS", at=(295, 273))
+    d.edge([(140, 360), (140, 755), (350, 755)], "login", "[OIDC]", at=(140, 560))
+    d.edge([(485, 370), (485, 420)], "/*", at=(495, 395), align="start")
+    d.edge([(620, 290), (730, 290)], "/ws", at=(675, 273))
+    d.edge([(620, 340), (670, 340), (670, 740), (730, 740)], "/api/*", at=(670, 540))
+    d.edge([(620, 800), (730, 800)], "valida JWT", at=(675, 783), dashed=True)
+    d.edge([(960, 300), (1010, 300)])
+    d.edge([(1350, 240), (1430, 240)], "áudio PCM", at=(1390, 222))
+    d.edge([(1350, 360), (1430, 360)], "fase + histórico", at=(1390, 342))
+    d.edge([(1350, 480), (1430, 480)], "frase", at=(1390, 462))
+    d.edge([(1670, 362), (1700, 362)])
+    d.edge([(1010, 510), (985, 510), (985, 940), (960, 940)], "turnos em texto\n(com consentimento)", at=(985, 870))
+    d.edge([(960, 755), (1060, 755)], "proxy", at=(1010, 738))
+    d.edge([(1080, 830), (1080, 860), (1030, 860), (1030, 1010), (960, 1010)], "sessão e retorno", at=(1030, 1040))
+    d.edge([(1185, 830), (1185, 900)], "POST /end", at=(1195, 865), align="start")
+    d.edge([(1310, 960), (1380, 960)], "aciona", at=(1345, 943))
+    d.edge([(1510, 900), (1510, 830)], "Retrieve", at=(1520, 865), align="start")
+    d.edge([(1640, 755), (1690, 755)])
+    d.edge([(1640, 990), (1690, 990)])
+    d.edge([(1510, 1080), (1510, 1100), (845, 1100), (845, 1050)], "grava o retorno (TTL)", at=(1180, 1100))
+
+    d.legend(1380, [("person", "Pessoa"), ("infra", "Serviço AWS"), ("infra-app", "Código da aplicação"),
+                    ("store", "Armazenamento"), ("boundary", "Limite"), ("edge", "Fluxo"), ("edge-dashed", "Validação")])
+    d.footer("Fontes: documentação AWS de Transcribe, Bedrock (Knowledge Bases, Guardrails, Evaluations), S3 Vectors e Organizations, consultada em 21 nov. 2026. Custo não estimado.")
+    d.save()
+
+
+def retorno_fundamentado() -> None:
+    d = Diagram(
+        "08-retorno-fundamentado-rag",
+        1850,
+        940,
+        "Retorno fundamentado — cadeia de etapas com RAG, validação e verificação",
+        "Fluxo de trabalho com caminho fixo (não agente). As etapas 1 e 4 são código determinístico; 3 e 5 chamam o modelo.",
+    )
+    xs = [30, 290, 550, 810, 1070, 1330, 1590]
+    steps = [
+        ("store", "Transcrição da sessão", "[texto; memória ou DynamoDB com TTL]", "Falas da pessoa e da entrevistadora"),
+        ("component", "1. Pré-checagem", "[código]", "Vazia ou curta demais: retorno fixo, sem chamar o modelo"),
+        ("component", "2. Recuperação", "[Knowledge Bases ou File Search]", "Descritores e critérios relevantes às falas"),
+        ("component", "3. Extração de evidências", "[LLM, saída estruturada]", "Por critério: nível estimado e citação literal"),
+        ("component", "4. Validação", "[código]", "Citação existe na transcrição? Critério existe na base? Descarta o resto"),
+        ("component", "5. Redação", "[LLM]", "Três blocos em português, só com evidências válidas"),
+        ("component", "6. Verificação", "[Guardrails: fundamentação]", "Sem apoio: nova tentativa; depois, retorno conservador"),
+    ]
+    for x, (kind, title, tech, desc) in zip(xs, steps):
+        d.box(x, 180, 220, 200, kind, title, tech, desc)
+    for a, b in zip(xs, xs[1:]):
+        d.edge([(a + 220, 280), (b, 280)])
+
+    d.box(550, 480, 220, 200, "store", "Base de conhecimento", "[S3: material público]",
+          "CEFR 2020: entrevistar e ser entrevistado; troca de informação; monólogo; monitoramento e reparo. Banco de perguntas autoral")
+    d.edge([(660, 480), (660, 380)], "trechos", at=(670, 430), align="start")
+    d.box(1590, 480, 220, 130, "container", "Interface web", "[React]", "Exibe os três blocos")
+    d.edge([(1700, 380), (1700, 480)], "três blocos", "[JSON]", at=(1710, 430), align="start")
+    d.edge([(400, 380), (400, 430), (1650, 430), (1650, 480)], "vazia: retorno fixo (M-04)", at=(1000, 430), dashed=True)
+    d.note(30, 480, 480, 130, "Regras da base", [
+        "Indexa só material público ou autoral; nunca transcrições (RC-04).",
+        "Corpus pequeno: começar com as escalas no contexto, sem busca.",
+    ])
+
+    d.boundary(30, 720, 1500, 150, "Avaliação contínua (offline)", "[antes de publicar nova versão de prompt ou modelo]")
+    loop = [
+        (60, "Conjunto de avaliação", "Sessões reais com consentimento e casos sintéticos rotulados"),
+        (420, "Juiz de fidelidade", "Veredito binário por afirmação, temperatura zero"),
+        (780, "Calibração humana", "Concordância do juiz com rótulos do avaliador"),
+        (1140, "Versão aprovada", "Prompt e modelo versionados"),
+    ]
+    for x, title, desc in loop:
+        d.box(x, 770, 330, 86, "future", title, "", desc)
+    for (a, *_), (b, *_) in zip(loop, loop[1:]):
+        d.edge([(a + 330, 813), (b, 813)])
+    d.edge([(1470, 813), (1540, 813), (1540, 660), (1440, 660), (1440, 380)], "publica", at=(1490, 660), dashed=True)
+
+    d.legend(905, [("store", "Dados"), ("component", "Etapa"), ("container", "Contêiner"),
+                   ("future", "Processo offline"), ("edge", "Fluxo"), ("edge-dashed", "Desvio ou publicação")])
     d.save()
 
 
@@ -552,4 +688,6 @@ if __name__ == "__main__":
     dinamico_turno()
     implantacao_aws()
     mapa_evolucao()
+    mvp_aws()
+    retorno_fundamentado()
     print("Diagramas gravados em", OUT)
