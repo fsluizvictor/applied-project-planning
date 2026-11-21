@@ -23,7 +23,7 @@ Este arquivo condensa o material das fases 1 a 7 no padrão do PDF `Exemplo - De
 | Figura 13 — Tela ao encerrar a sessão-piloto | `deliverables/area-de-experimentacao/assets/sessao-piloto-encerrada.png` |
 | CANVAS do Projeto Aplicado | montar no canvas visual do template a partir da seção 1 |
 
-**Capítulo 2:** as Sprints 1 e 2 foram executadas, e as entregas 1 e 2 da Sprint 3 estão registradas. O texto pronto para colar, com os pontos de inserção das figuras, está em `deliverables/area-de-experimentacao/capitulo-2.md`. O DAS versão 1 e a publicação em nuvem ainda não ocorreram: não inventá-los.
+**Capítulo 2:** as Sprints 1 e 2 foram executadas. Na Sprint 3, a sessão-piloto, a nota de privacidade e o DAS na versão 1 foram concluídos em 20 de novembro de 2026. A publicação em nuvem não foi realizada. O texto está em `deliverables/area-de-experimentacao/capitulo-2.md` e no relatório.
 
 ---
 
@@ -54,7 +54,7 @@ Inserir a figura do CANVAS do template e preencher os blocos com o resumo abaixo
 | **Objetivo SMART** | Desenvolver e testar um protótipo de voz (entrevista de emprego em tecnologia), medido por SUS ≥ 68, conclusão de tarefa ≥ 60% e redução de ansiedade na maioria dos participantes, em prazo a confirmar com o orientador. |
 | **Premissas e Restrições** | Dispositivo com microfone e internet; APIs de ASR, LLM e TTS acessíveis; áudios não retidos além da sessão; ASR avaliado para sotaque brasileiro; o protótipo não afirma melhorar fluência. |
 | **Backlog** | Essenciais: F01 seleção de cenário, F03 conversa por voz, F04 resposta oral da IA, F05 feedback pós-conversa. |
-| **Área de experimentação** | Sprints 1 e 2 executadas. Em 20 de novembro de 2026 a sessão-piloto durou oito minutos e 22 segundos, com quatro turnos reconhecidos. A nota de privacidade confirma o descarte do áudio da pessoa ao fim do turno; a transcrição fica em memória até o encerramento. DAS versão 1 e publicação em nuvem seguem pendentes. |
+| **Área de experimentação** | Sprints 1 e 2 executadas. Em 20 de novembro de 2026 a sessão-piloto durou oito minutos e 22 segundos, com quatro turnos reconhecidos. A nota de privacidade confirma o descarte do áudio da pessoa ao fim do turno; a transcrição fica em memória até o encerramento. O DAS versão 1 foi fechado na mesma data. A publicação em nuvem não foi realizada. |
 
 ---
 
@@ -306,7 +306,7 @@ Interface web em React, Vue ou Angular. API local que isola a chave do modelo. I
 
 Texto para colar no documento:
 
-O projeto está dividido em três sprints de sete dias corridos, de 2 a 22 de novembro de 2026. As Sprints 1 e 2 foram executadas. Na Sprint 3, a sessão-piloto e a nota de privacidade foram registradas em 20 de novembro de 2026. O DAS versão 1 e a publicação em nuvem seguem pendentes. A publicação em nuvem não é entrega obrigatória: entra somente se as três entregas anteriores estiverem concluídas e ainda houver tempo.
+O projeto está dividido em três sprints de sete dias corridos, de 2 a 22 de novembro de 2026. As Sprints 1 e 2 foram executadas. Na Sprint 3, a sessão-piloto, a nota de privacidade e o DAS versão 1 foram concluídos em 20 de novembro de 2026. A publicação em nuvem não foi realizada. A prova de conceito permanece local. Essa publicação não é condição para concluir o objetivo.
 
 Cada sprint produz quatro entregas. O quadro Kanban, em Trello, Planner ou ferramenta equivalente, registra o andamento nas colunas Backlog do Projeto, Backlog da Sprint, A Fazer, Em Andamento e Concluído.
 
@@ -348,9 +348,9 @@ Entregas:
 
 2. Nota de privacidade: áudio e transcrição não permanecem armazenados após o turno. Entrega registrada em 20 de novembro de 2026, em `docs/sprint-3/nota-de-privacidade.md`. A leitura confirma o descarte do áudio da pessoa ao fim do turno. A transcrição não é gravada em disco e permanece na memória da API até o encerramento da sessão. Nenhum código foi alterado. A página de preços do Gemini foi reaberta nessa data: na camada gratuita, os três modelos usados têm “Used to improve our products” como Yes.
 
-3. DAS versão 1, reunindo arquitetura, diagramas, premissas, restrições e o resultado da sessão-piloto.
+3. DAS versão 1, reunindo arquitetura, diagramas, premissas, restrições e o resultado da sessão-piloto. Entrega concluída em 20 de novembro de 2026. O documento descreve a arquitetura como construída. A publicação proposta na AWS está no mesmo documento e não foi implantada. O arquivo está em `deliverables/proposta-de-arquitetura/das-v1-simulador-entrevista.docx`. O parcial do repositório, `docs/sprint-1/das-parcial.md`, permanece na versão 0.2.
 
-4. Publicação em nuvem, somente se as três entregas anteriores estiverem concluídas e ainda houver tempo. Caso contrário, registro de que a prova de conceito permanece local.
+4. Publicação em nuvem, somente se as três entregas anteriores estiverem concluídas e ainda houver tempo. Não realizada. A prova de conceito permanece local.
 
 O print do quadro na abertura de cada sprint, as capturas da execução e a retrospectiva de meia a uma lauda entram na área de experimentação, depois que a sprint ocorrer.
 
@@ -360,17 +360,17 @@ O print do quadro na abertura de cada sprint, as capturas da execução e a retr
 
 Texto completo para colar, com os pontos de inserção das figuras 6 a 13: `deliverables/area-de-experimentacao/capitulo-2.md`.
 
-Síntese: a Sprint 1 fechou requisitos, combinação (React, Python 3.12 BFF, Gemini gratuito), instruções e DAS 0.1. O teste de 10 de novembro de 2026 validou diálogo e síntese; a transcrição veio vazia. A Sprint 2 implementou a tela local, a API do turno, o retorno em três blocos e os diagramas no DAS 0.2. Em 15 de novembro de 2026 o primeiro turno real também devolveu transcrição vazia; a captura não foi repetida. Em 20 de novembro de 2026 a sessão-piloto da Sprint 3 durou oito minutos e 22 segundos, com quatro turnos reconhecidos e retorno em três blocos. No mesmo dia, a nota de privacidade registrou o descarte do áudio da pessoa e a permanência da transcrição em memória até o encerramento. O DAS versão 1 e a publicação em nuvem não foram feitos.
+Síntese: a Sprint 1 fechou requisitos, combinação (React, Python 3.12 BFF, Gemini gratuito), instruções e DAS 0.1. O teste de 10 de novembro de 2026 validou diálogo e síntese; a transcrição veio vazia. A Sprint 2 implementou a tela local, a API do turno, o retorno em três blocos e os diagramas no DAS 0.2. Em 15 de novembro de 2026 o primeiro turno real também devolveu transcrição vazia; a captura não foi repetida. Em 20 de novembro de 2026 a sessão-piloto da Sprint 3 durou oito minutos e 22 segundos, com quatro turnos reconhecidos e retorno em três blocos. No mesmo dia, a nota de privacidade registrou o descarte do áudio da pessoa e a permanência da transcrição em memória até o encerramento, e o DAS versão 1 foi fechado com a arquitetura como construída. A publicação em nuvem não foi realizada.
 
 ---
 
 ## 3. Considerações Finais
 
-O texto abaixo incorpora a sessão-piloto e a nota de privacidade de 20 de novembro de 2026. O DAS versão 1 e a publicação em nuvem ainda não entram nestas considerações.
+O texto abaixo incorpora a sessão-piloto, a nota de privacidade e o DAS na versão 1, todos de 20 de novembro de 2026. A publicação em nuvem não foi realizada.
 
 ### 3.1 Resultados
 
-O resultado do Projeto Aplicado, até esta data, é a especificação fundamentada do desafio e da solução, mais a prova de conceito local. A tela abre com o cenário único, a API local devolve texto e áudio da entrevistadora, e o encerramento gera os três blocos. Os testes de 10 e de 15 de novembro de 2026 devolveram transcrição vazia. Em 20 de novembro de 2026, a sessão-piloto percorreu o fluxo em oito minutos e 22 segundos, com quatro turnos de transcrição não vazia, resposta oral e retorno em três blocos. A nota de privacidade do mesmo dia confirma que o áudio da pessoa é descartado ao fim do turno e que a transcrição permanece apenas em memória até o encerramento. Na camada gratuita, o provedor pode usar o conteúdo enviado para melhoria dos próprios produtos. O projeto não afirma ganho de fluência, reconhecimento de sotaque brasileiro fora dessa sessão, nem conformidade certificada com a Lei Geral de Proteção de Dados (LGPD).
+O resultado do Projeto Aplicado, até 21 de novembro de 2026, é a especificação fundamentada do desafio e da solução, a prova de conceito local e o DAS na versão 1. A tela abre com o cenário único, a API local devolve texto e áudio da entrevistadora, e o encerramento gera os três blocos. Os testes de 10 e de 15 de novembro de 2026 devolveram transcrição vazia. Em 20 de novembro de 2026, a sessão-piloto percorreu o fluxo em oito minutos e 22 segundos, com quatro turnos de transcrição não vazia, resposta oral e retorno em três blocos. A nota de privacidade do mesmo dia confirma que o áudio da pessoa é descartado ao fim do turno e que a transcrição permanece apenas em memória até o encerramento. Na camada gratuita, o provedor pode usar o conteúdo enviado para melhoria dos próprios produtos. O DAS na versão 1 registra a arquitetura como construída e deixa a implantação proposta na AWS identificada como não implantada. O projeto não afirma ganho de fluência, reconhecimento de sotaque brasileiro fora dessa sessão, nem conformidade certificada com a Lei Geral de Proteção de Dados (LGPD).
 
 Pontos positivos do processo: rastreabilidade problema → persona → hipótese → backlog → métricas; recusa de percentuais sem fonte; descarte de artigo retratado.
 
@@ -383,7 +383,7 @@ A contribuição atual é um recorte de arquitetura de solução com IA conversa
 ### 3.3 Próximos passos
 
 1. Confirmar com o orientador o prazo (elemento T), a fórmula GUT e se o teste com usuários será executado nesta edição do curso.  
-2. Fechar o DAS versão 1, reunindo arquitetura, diagramas, premissas, restrições, a sessão-piloto e a nota de privacidade. A publicação em nuvem entra somente se essa versão estiver pronta e ainda houver tempo. A sessão-piloto e a nota de privacidade já estão anexadas no capítulo 2.  
+2. A publicação em nuvem não foi executada. A prova de conceito permanece local, e a topologia proposta está no DAS versão 1, identificada como não implantada. Ela não é condição para concluir o objetivo. O prazo da sprint segue até 22 de novembro de 2026.  
 3. Se H-01 for suportada, avaliar um segundo cenário (reunião) e a adaptação de nível (F02).  
 4. Se H-01 for refutada, redesenhar interação ou tecnologia antes de qualquer expansão.  
 5. Pesquisa primária futura: situar qual cenário o público prioriza e se o sotaque brasileiro é reconhecido de forma aceitável.

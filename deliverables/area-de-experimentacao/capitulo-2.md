@@ -2,13 +2,13 @@
 
 Colar no capítulo 2 do template XP/IGTI, na seção “Área de Experimentação”. Inserir as figuras nos pontos indicados. Os arquivos estão neste diretório e em `deliverables/cronograma-sprints/`.
 
-Não colar chave de API, arquivos `.wav` nem transcrição inventada. As entregas 1 e 2 da Sprint 3 estão registradas. O DAS na versão 1 e a publicação em nuvem continuam pendentes: não inventá-los.
+Não colar chave de API, arquivos `.wav` nem transcrição inventada. As entregas 1, 2 e 3 da Sprint 3 estão registradas. A publicação em nuvem não foi realizada: não inventá-la.
 
 ---
 
 ## 2. Área de Experimentação
 
-A área de experimentação registra o planejamento, a execução e o resultado das sprints da prova de conceito. O quadro Kanban previsto no escopo foi materializado nas issues do repositório GitHub do artefato (`poc-en-simulator`), uma issue por entrega, com as etiquetas `sprint-1` e `sprint-2`. As Sprints 1 e 2 foram executadas. Na Sprint 3, as entregas 1 e 2 (sessão-piloto e nota de privacidade) foram concluídas em 20 de novembro de 2026. O DAS na versão 1 e a publicação em nuvem seguem pendentes.
+A área de experimentação registra o planejamento, a execução e o resultado das sprints da prova de conceito. O quadro Kanban previsto no escopo foi materializado nas issues do repositório GitHub do artefato (`poc-en-simulator`), uma issue por entrega, com as etiquetas `sprint-1` e `sprint-2`. As Sprints 1 e 2 foram executadas. Na Sprint 3, as entregas 1, 2 e 3 (sessão-piloto, nota de privacidade e DAS na versão 1) foram concluídas em 20 de novembro de 2026. A publicação em nuvem não foi realizada. A prova de conceito permanece local.
 
 ---
 
@@ -207,13 +207,13 @@ O documento canônico permanece `docs/sprint-1/das-parcial.md`. Não há banco d
 
 ### 2.3 Sprint 3 — Sessão-piloto e fechamento do DAS
 
-Período planejado: 16 a 22 de novembro de 2026. As entregas 1 e 2 foram executadas em 20 de novembro de 2026. As entregas 3 e 4 não foram executadas nesta data.
+Período: 16 a 22 de novembro de 2026. As entregas 1, 2 e 3 foram executadas em 20 de novembro de 2026. A entrega 4, publicação em nuvem, não foi realizada. A prova de conceito permanece local.
 
 #### 2.3.1 Solução
 
 **Evidência do planejamento**
 
-A Sprint 3 foi planejada com quatro entregas. A figura 12 reproduz o cartão de planejamento da sprint. As duas primeiras têm evidência de execução.
+A Sprint 3 foi planejada com quatro entregas. A figura 12 reproduz o cartão de planejamento da sprint. As três primeiras têm evidência de execução. A quarta não foi executada.
 
 **Figura 12 — Definição da Sprint 3**
 
@@ -249,11 +249,11 @@ Arquivo: `docs/sprint-3/nota-de-privacidade.md`, no repositório `poc-en-simulat
 
 3. **DAS versão 1**
 
-Não produzido. O documento canônico continua `docs/sprint-1/das-parcial.md`, versão 0.2.
+Redigido em 20 de novembro de 2026, a partir da versão 0.2, do código, do registro da sessão-piloto e da nota de privacidade. O documento descreve a arquitetura como construída e validada nessa sessão: reconhecimento, diálogo e síntese em cascata, interface em React e API local em Python 3.12. Reúne os requisitos RF-01 a RF-08, as restrições RC-01 a RC-09, as premissas P-01 a P-04, oito decisões arquiteturais e o resultado da sessão. A publicação em nuvem e a visão de produto mínimo viável constam do mesmo documento, rotuladas como proposta não implantada e como evolução fora da versão 1. A latência de cada etapa do turno não foi medida; essa lacuna está declarada. O arquivo parcial do repositório, `docs/sprint-1/das-parcial.md`, permanece na versão 0.2. A versão 1 está nos entregáveis, em `deliverables/proposta-de-arquitetura/das-v1-simulador-entrevista.docx`.
 
 4. **Publicação em nuvem**
 
-Não realizada. A prova de conceito permanece local. Esta entrega só cabe depois das três anteriores e somente se ainda houver tempo até 22 de novembro de 2026.
+Não realizada. A prova de conceito permanece local, em `http://127.0.0.1:5173`, com a API em `http://127.0.0.1:8765`. O DAS versão 1 descreve uma implantação proposta na AWS e lista os ajustes de código que ela exigiria. Nenhum serviço foi implantado. Essa publicação não é condição para concluir o objetivo.
 
 **Evidência dos resultados**
 
@@ -299,9 +299,13 @@ Este resultado não afirma ganho de fluência, não trata a transcrição como p
 
 O resultado é a distinção registrada na nota. O áudio da pessoa é descartado ao fim do turno. A transcrição permanece só em memória até o encerramento. O navegador mostra o texto enquanto a página está aberta e não o grava. O provedor, na camada gratuita, pode usar o conteúdo enviado para melhoria dos próprios produtos. Nenhum código foi alterado para produzir essa nota.
 
-3. **DAS versão 1 e publicação em nuvem**
+3. **DAS versão 1**
 
-Sem evidência de execução. Não se antecipa o texto dessas entregas.
+O resultado é o documento de fechamento, versão 1, de 20 de novembro de 2026. Os requisitos RF-01 a RF-08 constam como atendidos na sessão-piloto. As figuras da visão geral, dos componentes da API e da implantação proposta estão no relatório, nas figuras 17 a 19. A implantação proposta não foi executada.
+
+4. **Publicação em nuvem**
+
+Sem implantação. A saída registrada é a permanência local da prova de conceito.
 
 #### 2.3.2 Lições aprendidas (retrospectiva)
 
@@ -313,4 +317,6 @@ Sem evidência de execução. Não se antecipa o texto dessas entregas.
 
 4. **Privacidade.** A frase “áudio e transcrição não permanecem armazenados após o turno” vale, na leitura do código, para o áudio da pessoa. A transcrição fica na memória do processo até o encerramento, porque o turno seguinte e os três blocos dependem dela. Acima de 1 MB, o spool temporário do parser não foi tratado como gravação da aplicação: ele é fechado antes do reconhecimento. A coluna gratuita “Used to improve our products” igual a Yes, reaberta em 20 de novembro de 2026, mantém a restrição de usar apenas a voz de quem executa o teste. A nota não certifica conformidade com a LGPD.
 
-5. **O que a sprint ainda não fecha.** O DAS na versão 1 e a decisão sobre publicação em nuvem continuam por fazer. A figura 13 documenta a sessão local encerrada. Não documenta essas duas entregas.
+5. **DAS versão 1.** O fechamento descreveu a arquitetura como construída na sessão-piloto. A proposta anterior de chat de texto, com banco, fila e cadastro, ficou na visão de evolução, fora da versão 1. A latência de cada etapa do turno não foi medida e permanece como lacuna declarada.
+
+6. **Publicação em nuvem.** Não foi executada. O objetivo não depende dela. A topologia proposta ficou no DAS, com o rótulo de não implantada. Ela exigiria ajustes que a versão local não tem: API sem estado, limite de áudio menor e tempos-limite por etapa.
