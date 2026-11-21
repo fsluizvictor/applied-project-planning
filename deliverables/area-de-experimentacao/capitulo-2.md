@@ -2,13 +2,13 @@
 
 Colar no capítulo 2 do template XP/IGTI, na seção “Área de Experimentação”. Inserir as figuras nos pontos indicados. Os arquivos estão neste diretório e em `deliverables/cronograma-sprints/`.
 
-Não colar chave de API, arquivos `.wav` nem transcrição inventada. A Sprint 3 ainda não ocorreu: deixar a subseção 2.3 apenas com o texto de reserva.
+Não colar chave de API, arquivos `.wav` nem transcrição inventada. As entregas 1 e 2 da Sprint 3 estão registradas. O DAS na versão 1 e a publicação em nuvem continuam pendentes: não inventá-los.
 
 ---
 
 ## 2. Área de Experimentação
 
-A área de experimentação registra o planejamento, a execução e o resultado das sprints da prova de conceito. O quadro Kanban previsto no escopo foi materializado nas issues do repositório GitHub do artefato (`poc-en-simulator`), uma issue por entrega, com as etiquetas `sprint-1` e `sprint-2`. As Sprints 1 e 2 foram executadas. A Sprint 3 permanece reservada à sessão-piloto, à nota de privacidade e ao DAS na versão 1.
+A área de experimentação registra o planejamento, a execução e o resultado das sprints da prova de conceito. O quadro Kanban previsto no escopo foi materializado nas issues do repositório GitHub do artefato (`poc-en-simulator`), uma issue por entrega, com as etiquetas `sprint-1` e `sprint-2`. As Sprints 1 e 2 foram executadas. Na Sprint 3, as entregas 1 e 2 (sessão-piloto e nota de privacidade) foram concluídas em 20 de novembro de 2026. O DAS na versão 1 e a publicação em nuvem seguem pendentes.
 
 ---
 
@@ -207,9 +207,110 @@ O documento canônico permanece `docs/sprint-1/das-parcial.md`. Não há banco d
 
 ### 2.3 Sprint 3 — Sessão-piloto e fechamento do DAS
 
-Período planejado: 16 a 22 de novembro de 2026. **Esta sprint ainda não foi executada.** Não há registro de sessão-piloto, nota de privacidade fechada, DAS na versão 1 nem publicação em nuvem a anexar.
+Período planejado: 16 a 22 de novembro de 2026. As entregas 1 e 2 foram executadas em 20 de novembro de 2026. As entregas 3 e 4 não foram executadas nesta data.
 
-**2.3.1 Solução.** *A preencher após a execução.*  
-Evidências previstas: registro da sessão-piloto (duração, turnos reconhecidos e feedback); nota de privacidade; DAS versão 1. A publicação em nuvem só é evidência se tiver sido feita. Não antecipar números.
+#### 2.3.1 Solução
 
-**2.3.2 Lições aprendidas / Retrospectiva.** *A preencher após a execução.*
+**Evidência do planejamento**
+
+A Sprint 3 foi planejada com quatro entregas. A figura 12 reproduz o cartão de planejamento da sprint. As duas primeiras têm evidência de execução.
+
+**Figura 12 — Definição da Sprint 3**
+
+*(inserir `deliverables/cronograma-sprints/sprint-3.png`)*
+
+**Evidência da execução de cada requisito**
+
+1. **Registro da sessão-piloto**
+
+A sessão ocorreu na interface local, em `http://127.0.0.1:5173`, no cenário “Entrevista de emprego — Tecnologia”. O início foi o clique em “Start interview”. O encerramento foi o clique em “End interview”. O relógio local marcou 21:11:25 com a tela em “Starting”, durante o pedido da abertura, e 21:19:47 com a tela em “Processing”, depois do clique de encerramento. A duração medida foi de oito minutos e 22 segundos. A rota de encerramento respondeu 200.
+
+Antes da sessão oficial, o diagnóstico usou uma única captura. O modelo `gemini-3.5-transcribe` devolveu a frase no campo `candidates[].content.parts[].text`, que é o campo já lido pelo extrator em `api/gemini_client.py`. A transcrição extraída foi “I am a software engineer and I work with Python and web”. O extrator não foi alterado e não houve segunda captura de diagnóstico. Essa captura não entra na contagem dos quatro turnos.
+
+A sessão oficial teve quatro turnos com transcrição não vazia. Cada turno devolveu a fala seguinte da entrevistadora com áudio. Nenhuma chamada HTTP dessa sessão falhou. Uma abertura anterior, encerrada sem resposta falada, não entra neste registro. O áudio da pessoa foi apagado ao fim de cada turno e não está no repositório.
+
+Arquivo: `docs/sprint-3/registro-sessao-piloto.md`, no repositório `poc-en-simulator`.
+
+2. **Nota de privacidade**
+
+A nota foi redigida em 20 de novembro de 2026, a partir da leitura do código. Nenhum arquivo de aplicação foi alterado. O critério da sprint confirma-se para o áudio da pessoa: em `api/app.py`, o corpo do turno segue ao reconhecimento e, na linha seguinte, `audio_bytes = b""`. `api/sessions.py` guarda apenas `role` e `text`.
+
+A transcrição não segue o mesmo intervalo. O texto entra em `session.history` e permanece na memória do processo até `POST /api/sessions/{id}/end`. Nessa rota a sessão sai do dicionário e `history.clear()` é chamado. A transcrição não é gravada em disco e não some ao fim de cada turno. Se o encerramento não for chamado, o histórico permanece no processo.
+
+No navegador, `web/src/hooks/useInterview.js` acumula as falas em `messages` e, depois do encerramento, guarda os três blocos em `feedback`. Esse estado dura enquanto a página estiver aberta. Não há `localStorage`, `sessionStorage` nem IndexedDB. O áudio do microfone não fica em estado depois do envio. O áudio reproduzido é o da entrevistadora, em blob URL.
+
+Acima de 1 MB, o parser de formulário do Starlette pode usar arquivo temporário de spool. `await audio.close()` ocorre antes do reconhecimento, e o fechamento destrói esse temporário. Não é um `.wav` gravado pela aplicação. O limite do turno continua 8 MB, em `MAX_AUDIO_BYTES`.
+
+A página de preços do provedor foi reaberta nesta data. Na camada gratuita, o conteúdo enviado pode ser usado para melhoria dos produtos (GOOGLE, 2026a). Nos três modelos usados, a coluna gratuita de “Used to improve our products” está como Yes. A aplicação não controla essa retenção. Por isso a sessão usa somente a voz de quem executa o teste. A nota não afirma conformidade certificada com a Lei Geral de Proteção de Dados (LGPD) nem que o provedor apague o conteúdo.
+
+A suíte local, sem chamada ao provedor, executou cinco testes em 0,188 s, com resultado OK. Dois deles cobrem a ausência de áudio no histórico e a remoção da sessão no encerramento.
+
+Arquivo: `docs/sprint-3/nota-de-privacidade.md`, no repositório `poc-en-simulator`.
+
+3. **DAS versão 1**
+
+Não produzido. O documento canônico continua `docs/sprint-1/das-parcial.md`, versão 0.2.
+
+4. **Publicação em nuvem**
+
+Não realizada. A prova de conceito permanece local. Esta entrega só cabe depois das três anteriores e somente se ainda houver tempo até 22 de novembro de 2026.
+
+**Evidência dos resultados**
+
+1. **Sessão-piloto**
+
+A abertura, devolvida com áudio, foi: “Hi, thanks for joining me today. Could you briefly introduce yourself and tell me a bit about your experience with software development?”
+
+Os quatro turnos abaixo reproduzem a transcrição e a fala seguinte como a interface as mostrou. A abertura não entra na contagem.
+
+Turno 1. Transcrição: “I am a software engineer and I have about five years of experience. At the moment I worked with closure.” Fala seguinte: “That sounds interesting. Could you tell me about a recent project you worked on using Clojure?”
+
+Turno 2. Transcrição: “Of course, I explain my experience saying about my of my current company. Well, my current company is a financial company.” Fala seguinte: “Thanks for sharing that. What did your role involve on that project at the financial company?”
+
+Turno 3. Transcrição: “Of course, my current job is about the director on app of this company.” Fala seguinte: “Could you tell me about a specific technical difficulty or challenge you ran into while working on that app?”
+
+Turno 4. Transcrição: “Of course, my principal problem that I worked direct in my company is involve involve latency and other metrics about the.” Fala seguinte: “How did you go about investigating and resolving that latency issue?”
+
+A figura 13 é a captura da tela ao encerrar. Nela aparecem o cenário, o estado “Session ended”, a última pergunta da entrevistadora, o último trecho reconhecido e os blocos de retorno visíveis nessa captura.
+
+**Figura 13 — Tela ao encerrar a sessão-piloto**
+
+*(inserir `deliverables/area-de-experimentacao/assets/sessao-piloto-encerrada.png`)*
+
+O retorno em três blocos é o texto que a tela mostrou depois de “End interview”, conservado como foi devolvido.
+
+Pontos positivos:
+
+- Você demonstrou cordialidade e disposição para responder às perguntas ao usar frases como “Of course, I explain my experience...” e “Of course, my current job is about...”.
+- Você manteve o foco no contexto profissional ao mencionar o seu tempo de experiência (“I am a software engineer and I have about five years of experience”) e o setor da empresa (“a financial company”).
+
+Pontos de melhoria:
+
+- Houve repetições e hesitações na estrutura das frases que dificultam a clareza, como em “my principal problem that I worked direct in my company is involve involve latency and other metrics about the”.
+- A formulação das respostas em alguns momentos soou truncada ou incompleta, por exemplo, “about the director on app of this company”, o que prejudica a fluidez esperada em uma entrevista de emprego.
+
+Próximo passo:
+
+- Pratique responder a uma pergunta de entrevista por vez, escrevendo primeiro um rascunho de frase curta e direta (por exemplo, focando em um problema técnico e sua solução) e, em seguida, treinando a fala em voz alta sem repetir palavras.
+
+Este resultado não afirma ganho de fluência, não trata a transcrição como prova geral de reconhecimento de sotaque brasileiro e não inclui amostra externa.
+
+2. **Nota de privacidade**
+
+O resultado é a distinção registrada na nota. O áudio da pessoa é descartado ao fim do turno. A transcrição permanece só em memória até o encerramento. O navegador mostra o texto enquanto a página está aberta e não o grava. O provedor, na camada gratuita, pode usar o conteúdo enviado para melhoria dos próprios produtos. Nenhum código foi alterado para produzir essa nota.
+
+3. **DAS versão 1 e publicação em nuvem**
+
+Sem evidência de execução. Não se antecipa o texto dessas entregas.
+
+#### 2.3.2 Lições aprendidas (retrospectiva)
+
+1. **Reconhecimento.** O extrator não era a causa das transcrições vazias de 10 e de 15 de novembro de 2026. No diagnóstico de 20 de novembro de 2026, o provedor devolveu texto no campo que o código já lia. Na sessão oficial, os quatro turnos trouxeram transcrição não vazia, dentro de oito minutos e 22 segundos. O requisito RF-03 passa a ter evidência positiva nesta sessão. As hesitações permaneceram no texto (“involve involve”, “about the director on app”), o que é compatível com o modo literal escolhido na Sprint 1. Isso não autoriza afirmar acurácia para sotaque brasileiro fora desta sessão.
+
+2. **Diálogo.** A entrevistadora manteve o papel e fez a pergunta seguinte a partir do texto reconhecido, inclusive quando a frase veio truncada. No turno 1, a transcrição traz “closure” e a fala seguinte pergunta sobre “Clojure”. O registro conserva as duas formas. Não se corrige uma pela outra.
+
+3. **Retorno em três blocos.** Desta vez os blocos citam trechos da transcrição da própria sessão. Em 15 de novembro de 2026, com transcrição vazia, o bloco de pontos positivos tinha atribuído participação sem citar uma frase dita. A diferença fica registrada como comportamento observado do modelo, não como validação pedagógica do retorno.
+
+4. **Privacidade.** A frase “áudio e transcrição não permanecem armazenados após o turno” vale, na leitura do código, para o áudio da pessoa. A transcrição fica na memória do processo até o encerramento, porque o turno seguinte e os três blocos dependem dela. Acima de 1 MB, o spool temporário do parser não foi tratado como gravação da aplicação: ele é fechado antes do reconhecimento. A coluna gratuita “Used to improve our products” igual a Yes, reaberta em 20 de novembro de 2026, mantém a restrição de usar apenas a voz de quem executa o teste. A nota não certifica conformidade com a LGPD.
+
+5. **O que a sprint ainda não fecha.** O DAS na versão 1 e a decisão sobre publicação em nuvem continuam por fazer. A figura 13 documenta a sessão local encerrada. Não documenta essas duas entregas.
